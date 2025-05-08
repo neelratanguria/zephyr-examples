@@ -1,0 +1,17 @@
+/* Enable GPIO1 */
+&gpio1 {
+    status = "okay";
+};
+
+
+/ {
+    custom_pins {
+        compatible = "gpio-keys";
+        custom_button: custom_button_0 {
+            gpios = < &gpio1 5 GPIO_ACTIVE_HIGH >;
+            label = "Custom Button on GPIO1 Pin 5";
+            zephyr,code = < 0x5 >;
+        };
+    };
+};
+
