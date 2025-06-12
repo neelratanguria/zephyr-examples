@@ -59,7 +59,7 @@ int main(void)
 		return 0;
 	}
 
-	printk("I2C buss %s ready!\n\r", dev_i2c.bus->name);
+	printk("I2C bus %s ready!\n\r", dev_i2c.bus->name);
 
 	int ret;
 
@@ -72,8 +72,6 @@ int main(void)
         printk("Failed to read Device ID");
         
     }
-
-	printk("kidhar gya!\n\r");
 
 	// Set measurement mode
     adxl345_write_reg(ADXL345_REG_POWER_CTL, 0x08);
