@@ -18,6 +18,21 @@ static const struct i2c_dt_spec dev_i2c = I2C_DT_SPEC_GET(I2C0_NODE);
 // SDA: P0.26
 // SCL: P0.27
 
+/*
+ * 📌 Hardware Connections: ADXL345 to nRF52833 DK (I2C Mode)
+ *
+ * ADXL345 Pin    Function       Connected to nRF52833 DK Pin
+ * ----------------------------------------------------------
+ * VCC            Power          VDD (3.3V)
+ * GND            Ground         GND
+ * SDA            I2C Data       P0.26  // or any available GPIO
+ * SCL            I2C Clock      P0.27  // or any available GPIO
+ * CS             Mode Select    VDD    // Tie HIGH to enable I2C mode
+ * SDO            Addr Select    GND    // GND = I2C address 0x53, VDD = 0x1D
+ * INT1, INT2     Interrupts     (Optional) Connect to any GPIO if used
+ */
+
+
 /* 1000 msec = 1 sec */
 #define SLEEP_TIME_MS 1000
 
