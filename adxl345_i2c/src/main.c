@@ -14,6 +14,10 @@
 
 static const struct i2c_dt_spec dev_i2c = I2C_DT_SPEC_GET(I2C0_NODE);
 
+// Pins
+// SDA: P0.26
+// SCL: P0.27
+
 /* 1000 msec = 1 sec */
 #define SLEEP_TIME_MS 1000
 
