@@ -1,0 +1,41 @@
+/* STEP 2.1 - Add the SPI peripheral to spi1 */
+&i2c0 {status = "disabled";};
+&spi0 {status = "disabled";};
+&i2c1 {status = "disabled";};
+
+	&spi1 {
+		status = "okay";
+		cs-gpios = <&gpio0 27 GPIO_ACTIVE_LOW>;
+	
+		sdcard: spi-dev@0 {
+			compatible = "zephyr,sdhc-spi-slot";
+			reg = <0>;
+			spi-max-frequency = <400000>; // try between 400kHz - 25MHz
+			status = "okay";
+	
+			mmc {
+				compatible = "zephyr,sdmmc-disk";
+				disk-name = "SD";
+				status = "okay";
+			};
+		};
+	};
+
+&pinctrl {
+	spi1_default: spi1_default {
+		group1 {
+			psels = <NRF_PSEL(SPIM_SCK, 0, 23)>,
+			        <NRF_PSEL(SPIM_MOSI, 0, 2)>,
+			        <NRF_PSEL(SPIM_MISO, 0, 26)>;
+		};
+	};
+
+	spi1_sleep: spi1_sleep {
+		group1 {
+			psels = <NRF_PSEL(SPIM_SCK, 0, 23)>,
+			        <NRF_PSEL(SPIM_MOSI, 0, 2)>,
+			        <NRF_PSEL(SPIM_MISO, 0, 26)>;
+			low-power-enable;
+		};
+	};
+};
