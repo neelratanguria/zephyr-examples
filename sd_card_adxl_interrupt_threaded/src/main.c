@@ -361,12 +361,12 @@ void main(void)
     
             // If full, trigger SD write
             if (active_index >= BUFFER_SIZE) {
-                for (int i = 0; i < BUFFER_SIZE; i += 6) {
-                    int16_t x = (int16_t)(flush_buf[i] | (flush_buf[i+1] << 8));
-                    int16_t y = (int16_t)(flush_buf[i+2] | (flush_buf[i+3] << 8));
-                    int16_t z = (int16_t)(flush_buf[i+4] | (flush_buf[i+5] << 8));
-                    LOG_INF("Sample %03d: X=%d Y=%d Z=%d", i / 6, x, y, z);
-                }
+                // for (int i = 0; i < BUFFER_SIZE; i += 6) {
+                //     int16_t x = (int16_t)(flush_buf[i] | (flush_buf[i+1] << 8));
+                //     int16_t y = (int16_t)(flush_buf[i+2] | (flush_buf[i+3] << 8));
+                //     int16_t z = (int16_t)(flush_buf[i+4] | (flush_buf[i+5] << 8));
+                //     LOG_INF("Sample %03d: X=%d Y=%d Z=%d", i / 6, x, y, z);
+                // }
 
                 uint8_t *temp = active_buf;
                 active_buf = flush_buf;
